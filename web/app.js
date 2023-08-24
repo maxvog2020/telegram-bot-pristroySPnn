@@ -2,6 +2,7 @@ let tg = window.Telegram.WebApp;
 
 tg.expand();
 
-tg.text = "Главная кнопка";
-// tg.show();
+let main_button = tg.MainButton;
+main_button.text = "Главная кнопка";
+main_button.show();
 
