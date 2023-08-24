@@ -1,9 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--tg-theme-bg-color);
+}
+
 p {
     color: var(--tg-theme-text-color);
 }
 
 button {
-    color: (--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    background-color: var(--tg-theme-button-color);
 }
 
 h1 {
