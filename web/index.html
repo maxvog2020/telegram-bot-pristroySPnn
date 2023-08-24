@@ -13,47 +13,68 @@
 </head>
 
 <body>
-    <div id="subbody" class="min-h-screen p-6 flex items-center justify-center">
+    <form id="subbody" class="min-h-screen p-6 flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto">
-
             <div class="rounded shadow-lg p-4 px-4 md:p-8 mb-6">
-                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                <div class="grid gap-4 gap-y-2 text-sm grid-cols-2 lg:grid-cols-3">
                     <div>
-                        <p class="font-medium text-lg">Объявление о продаже</p>
-                        <p>Пожалуйста, заполните поля.</p>
+                        <h2 class="mb-2 text-lg font-semibold">Правила заполнения формы:</h2>
+                        <ul class="max-w-md space-y-1 list-disc list-inside">
+                            <li>
+                                Название не длиннее 100 символов
+                            </li>
+                            <li>
+                                Адрес не длиннее 100 символов
+                            </li>
+                            <li>
+                                Описание не длиннее 512 символов
+                            </li>
+                            <li>
+                                Не больше 5 фотографий
+                            </li>
+                        </ul>
                     </div>
 
                     <div class="lg:col-span-2">
                         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                             <div class="md:col-span-5">
-                                <label for="full_name">Название</label>
+                                <label for="name">Название</label>
                                 <input type="text" name="full_name" id="full_name"
-                                    class="h-10 border mt-1 rounded px-4 w-full" value="" />
+                                    class="h-10 border mt-1 rounded px-4 w-full" value="" placeholder="Двухкомнатная квартира" />
+                                <span class="text-sm text-red-600">Название слишком длинное!</span>
                             </div>
 
                             <div class="md:col-span-5">
-                                <label for="email">Email Address</label>
-                                <input type="text" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full"
-                                    value="" placeholder="email@domain.com" />
-                            </div>
-
-                            <div class="md:col-span-3">
-                                <label for="address">Address / Street</label>
+                                <label for="address">Адрес</label>
                                 <input type="text" name="address" id="address"
-                                    class="h-10 border mt-1 rounded px-4 w-full" value="" placeholder="" />
+                                    class="h-10 border mt-1 rounded px-4 w-full" value="" placeholder="6А, Кремль, Нижний Новгород" />
                             </div>
 
-                            <div class="md:col-span-2">
-                                <label for="city">City</label>
-                                <input type="text" name="city" id="city" class="h-10 border mt-1 rounded px-4 w-full"
-                                    value="" placeholder="" />
+                            <div class="md:col-span-5">
+                                <label for="description">Описание</label>
+                                <textarea name="description" id="description" rows="4"
+                                    class="block border p-2.5 w-full text-sm rounded-lg" value=""
+                                    placeholder="В квартире три спальни, гостиная и кухня..."></textarea>
+                            </div>
+
+                            <div class="md:col-span-5">
+                                <label for="contacts">Контакты</label>
+                                <input type="text" name="contacts" id="contacts"
+                                    class="h-10 border mt-1 rounded px-4 w-full" value="" placeholder="email@mail.com" />
+                            </div>
+
+                            <div class="md:col-span-5">
+                                <div class="inline-flex items-center">
+                                    <input type="checkbox" name="telegram" id="telegram" class="form-checkbox" />
+                                    <label for="telegram" class="ml-2">Прикрепить ссылку на мой аккаунт Telegram</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 </body>
 
 </html>
