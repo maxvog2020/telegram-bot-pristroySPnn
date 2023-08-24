@@ -9,6 +9,7 @@ from aiogram.filters import Command
 TOKEN = config.bot_token.get_secret_value()
 CHAT_ID = config.chat_id.get_secret_value()
 MODER = config.moder.get_secret_value()
+WEB = config.web
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=TOKEN)
@@ -16,7 +17,7 @@ dp = Dispatcher()
 
 @dp.message(Command("start"))
 async def on_start(message: Message):
-    await message.answer("Hello, world!")
+    await message.answer(WEB)
 
 #########################
 async def main():
