@@ -1,7 +1,7 @@
-function setThemeClass() {
-    document.documentElement.className = Telegram.WebApp.colorScheme;
-}
+let tg = window.Telegram.WebApp;
 
-Telegram.WebApp.onEvent('themeChanged', setThemeClass);
-setThemeClass();
+tg.expand();
+
+tg.text = "Главная кнопка";
+tg.show();
 
