@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-
+@dp.message()
 async def on_start(message: Message):
     markup = InlineKeyboardBuilder()
     markup.add(InlineKeyboardButton(text="Клик!", web_app=WebAppInfo(url=WEB)))
