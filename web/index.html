@@ -17,24 +17,6 @@
         <div class="container max-w-screen-lg mx-auto">
             <div class="rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-2 lg:grid-cols-3">
-                    <div>
-                        <h2 class="mb-2 text-lg font-semibold">Правила заполнения формы:</h2>
-                        <ul class="max-w-md space-y-1 list-disc list-inside">
-                            <li>
-                                Название не длиннее 100 символов
-                            </li>
-                            <li>
-                                Адрес не длиннее 100 символов
-                            </li>
-                            <li>
-                                Описание не длиннее 512 символов
-                            </li>
-                            <li>
-                                Не больше 5 фотографий
-                            </li>
-                        </ul>
-                    </div>
-
                     <div class="lg:col-span-2">
                         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                             <div class="md:col-span-5">
@@ -48,6 +30,7 @@
                                 <label for="address">Адрес</label>
                                 <input type="text" name="address" id="address"
                                     class="h-10 border mt-1 rounded px-4 w-full" value="" placeholder="6А, Кремль, Нижний Новгород" />
+                                <span class="text-sm text-red-600">Адрес слишком длинный!</span>
                             </div>
 
                             <div class="md:col-span-5">
@@ -55,12 +38,14 @@
                                 <textarea name="description" id="description" rows="4"
                                     class="block border p-2.5 w-full text-sm rounded-lg" value=""
                                     placeholder="В квартире три спальни, гостиная и кухня..."></textarea>
+                                <span class="text-sm text-red-600">Описание слишком длинное!</span>
                             </div>
 
                             <div class="md:col-span-5">
                                 <label for="contacts">Контакты</label>
                                 <input type="text" name="contacts" id="contacts"
                                     class="h-10 border mt-1 rounded px-4 w-full" value="" placeholder="email@mail.com" />
+                                <span class="text-sm text-red-600">Превышение лимита символов!</span>
                             </div>
 
                             <div class="md:col-span-5">
@@ -70,6 +55,27 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div>
+                        <h2 class="mb-2 text-base font-semibold">Правила заполнения формы:</h2>
+                        <ul class="max-w-md space-y-1 list-disc list-inside text-xs">
+                            <li>
+                                Название не длиннее 100 символов
+                            </li>
+                            <li>
+                                Адрес не длиннее 100 символов
+                            </li>
+                            <li>
+                                Описание не длиннее 512 символов
+                            </li>
+                            <li>
+                                Контакты не длиннее 100 символов
+                            </li>
+                            <li>
+                                Не больше 5 фотографий
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
