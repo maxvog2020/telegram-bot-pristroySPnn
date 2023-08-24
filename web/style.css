@@ -6,3 +6,7 @@ button {
     color: (--tg-theme-button-color);
 }
 
+h1 {
+    color: red;
+}
+
