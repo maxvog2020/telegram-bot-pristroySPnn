@@ -17,11 +17,10 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
 
-@dp.message(Command("start"))
 async def on_start(message: Message):
     markup = InlineKeyboardBuilder()
-    markup.add(InlineKeyboardButton(text="Кнопка!", web_app=WebAppInfo(url=WEB)))
-    await message.answer("Кликни на кнопку", reply_markup=markup.as_markup())
+    markup.add(InlineKeyboardButton(text="Клик!", web_app=WebAppInfo(url=WEB)))
+    await message.answer("Нажмите на кнопку", reply_markup=markup.as_markup())
 
 
 #########################
