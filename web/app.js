@@ -25,6 +25,7 @@ function toggle(cond, count) {
     }
 }
 
+
 const DEPENDENT_COUNTERS = [
     ['name', 128, true],
     ['address', 128, true],
@@ -52,5 +53,9 @@ window.onload = () => {
         oninput();
         tag.oninput = oninput;
     });
+
+    let images = document.getElementById('images');
+    let hidden = document.getElementById('hidden_input');
+    images.onclick = () => hidden.click();
 };
 
