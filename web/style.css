@@ -1,19 +1,16 @@
 body {
     margin: 0;
     padding: 0;
+    color: var(--tg-theme-text-color);
     background-color: var(--tg-theme-bg-color);
 }
 
-p {
-    color: var(--tg-theme-text-color);
+#subbody {
+    background-color: var(--tg-theme-secondary-bg-color);
 }
 
 button {
     color: var(--tg-theme-button-text-color);
     background-color: var(--tg-theme-button-color);
-}
-
-h1 {
-    color: red;
 }
 
