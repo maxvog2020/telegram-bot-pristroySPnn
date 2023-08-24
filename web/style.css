@@ -14,3 +14,7 @@ button {
     background-color: var(--tg-theme-button-color);
 }
 
+input, textarea {
+    color: var(--tg-theme-text-color);
+    background-color: var(--tg-theme-bg-color);
+}
