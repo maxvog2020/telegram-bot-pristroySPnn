@@ -76,7 +76,7 @@ window.onload = () => {
         count.innerText = `(${len}/5)`;
         toggle(len <= 5, count);
     };
-    
+
 
     main_button.onClick(() => {
         let data = {
@@ -86,8 +86,7 @@ window.onload = () => {
             contacts: document.getElementById('contacts').value,
             images: files,
         };
-    
-        document.getElementById('name').remove();
+ 
         tg.sendData(JSON.stringify(data));
     });
 };

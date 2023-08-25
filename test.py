@@ -2,9 +2,9 @@ from config import config
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher
-from aiogram.types import Message, WebAppInfo
+from aiogram.types import Message, WebAppInfo, KeyboardButton
 from aiogram.filters import Command
-from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 
 TOKEN = config.bot_token.get_secret_value()
@@ -18,8 +18,8 @@ dp = Dispatcher()
 
 @dp.message()
 async def on_start(message: Message):
-    markup = InlineKeyboardBuilder()
-    markup.add(InlineKeyboardButton(text="Клик!", web_app=WebAppInfo(url=WEB)))
+    markup = ReplyKeyboardBuilder()
+    markup.add(KeyboardButton(text="Создать объявление", web_app=WebAppInfo(url=WEB)))
     await message.answer("Нажмите на кнопку", reply_markup=markup.as_markup())
 
 
