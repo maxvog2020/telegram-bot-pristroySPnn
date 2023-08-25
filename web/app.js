@@ -70,23 +70,14 @@ window.onload = () => {
     let count = document.getElementById('images_count');
     
     images.onclick = () => input.click();
-    count.innerText = "AAAAAAAAAAAAAAAAA";
-    document.getElementById('name').remove();
-
 
     setInterval(() => {
-        count.innerText = JSON.stringify(input.value);
-    }, 100);
+        files = input.files;
+        let len = files.length;
 
-    // reader.onload = (e) => {
-    //     let content = e.target.result;
-    //     files.push(content);
-
-    //     let len = files.length;
-
-    //     count.innerText = `(${len}/5)`;
-    //     toggle(len <= 5, count);
-    // }
+        count.innerText = `(${len}/5)`;
+        toggle(len <= 5, count);
+    }, 50);
 
 
     main_button.onClick(() => {
