@@ -1,6 +1,8 @@
 let tg = window.Telegram.WebApp;
 let main_button = tg.MainButton;
+
 let files = [];
+let reader = new FileReader();
 
 
 const COLOR_GREEN = "text-green-500";
@@ -69,13 +71,19 @@ window.onload = () => {
     
     images.onclick = () => input.click();
 
-    input.onchange = (e) => {
-        files = input.files;
-        let len = files.length;
+    setInterval(() => {
+        count.innerText = JSON.stringify(input.value);
+    }, 100);
 
-        count.innerText = `(${len}/5)`;
-        toggle(len <= 5, count);
-    };
+    // reader.onload = (e) => {
+    //     let content = e.target.result;
+    //     files.push(content);
+
+    //     let len = files.length;
+
+    //     count.innerText = `(${len}/5)`;
+    //     toggle(len <= 5, count);
+    // }
 
 
     main_button.onClick(() => {
