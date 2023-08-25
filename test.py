@@ -1,7 +1,7 @@
 from config import config
 import asyncio
 import logging
-from aiogram import Bot, Dispatcher
+from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, WebAppInfo, KeyboardButton
 from aiogram.filters import Command
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
@@ -15,6 +15,10 @@ WEB = config.web
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
+
+@dp.message(F.web_app_data)
+async def on_get_data(message: Message):
+    await message.answer(message.web_app_data)
 
 @dp.message()
 async def on_start(message: Message):

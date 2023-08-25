@@ -69,13 +69,13 @@ window.onload = () => {
     
     images.onclick = () => input.click();
 
-    input.onchange = () => {
+    input.addEventListener('change', () => {
         files = input.files;
         let len = files.length;
 
         count.innerText = `(${len}/5)`;
         toggle(len <= 5, count);
-    };
+    });
 
 
     main_button.onClick(() => {
