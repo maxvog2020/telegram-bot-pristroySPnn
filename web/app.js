@@ -56,7 +56,6 @@ window.onload = () => {
             let cond = len <= max_len
             if (req) { cond = cond && len > 0; }
 
-            block -= 1;
             toggle(cond, count);
         };
 
