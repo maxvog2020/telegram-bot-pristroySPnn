@@ -1,5 +1,6 @@
 let tg = window.Telegram.WebApp;
 let main_button = tg.MainButton;
+let files = [];
 
 
 const COLOR_GREEN = "text-green-500";
@@ -11,8 +12,15 @@ const DEPENDENT_COUNTERS = [
     ['contacts', 128, false],
 ];
 
-var files = [];
 
+function toggleBlock() {
+    let reds = document.getElementsByClassName(COLOR_RED);
+    if (reds.length > 0) {
+        main_button.disable();
+    } else {
+        main_button.enable();
+    }
+}
 
 function toggle(cond, count) {
     if (cond) {
@@ -22,6 +30,8 @@ function toggle(cond, count) {
         count.classList.add(COLOR_RED);
         count.classList.remove(COLOR_GREEN);
     }
+
+    toggleBlock();
 }
 
 
@@ -31,7 +41,7 @@ window.onload = () => {
 
     main_button.text = "Опубликовать";
     main_button.show();
-    // TODO: отключение главной кнопки
+    toggleBlock();
 
     DEPENDENT_COUNTERS.forEach(item => {
         let [name, max_len, req] = item;
@@ -58,10 +68,6 @@ window.onload = () => {
     let input = document.getElementById('hidden_input');
     let count = document.getElementById('images_count');
     images.onclick = () => input.click();
-
-    input.onclick = () => {
-        input.files = null;
-    };
 
     input.onchange = () => {
         files = input.files;
