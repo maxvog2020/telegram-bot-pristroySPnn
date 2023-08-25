@@ -86,6 +86,7 @@ window.onload = () => {
             contacts: document.getElementById('contacts').value,
             image_count: document.getElementById('image_count').value,
             telegram: document.getElementById('telegram').checked,
+            callback: "test_callback",
         };
  
         tg.sendData(JSON.stringify(data));
