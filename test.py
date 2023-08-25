@@ -55,12 +55,13 @@ async def on_get_data(message: Message, state: FSMContext):
     data = message.web_app_data.data
     user = message.from_user
 
-    await message.delete()
-    
     json_data = json.loads(data)
+    print(json_data)
+
     callback = callbacks[json_data['callback']]
     image_count = json_data['image_count']
 
+    await message.delete()
     await state.update_data(callback=callback, image_count=image_count, json_data=json_data)
     if image_count == 0:
         publish(message, await state.get_data())
