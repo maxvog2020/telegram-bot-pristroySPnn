@@ -4,23 +4,6 @@ let main_button = tg.MainButton;
 
 const COLOR_GREEN = "text-green-500";
 const COLOR_RED = "text-red-500";
-var files = [];
-
-function toggle(cond, count) {
-    if (cond) {
-        count.classList.add(COLOR_GREEN);
-        count.classList.remove(COLOR_RED);
-
-        main_button.enable();
-    } else {
-        count.classList.add(COLOR_RED);
-        count.classList.remove(COLOR_GREEN);
-
-        main_button.disable();
-    }
-}
-
-
 const DEPENDENT_COUNTERS = [
     ['name', 128, true],
     ['address', 128, true],
@@ -28,13 +11,27 @@ const DEPENDENT_COUNTERS = [
     ['contacts', 128, false],
 ];
 
+var files = [];
+
+
+function toggle(cond, count) {
+    if (cond) {
+        count.classList.add(COLOR_GREEN);
+        count.classList.remove(COLOR_RED); 
+    } else {
+        count.classList.add(COLOR_RED);
+        count.classList.remove(COLOR_GREEN);
+    }
+}
+
+
 window.onload = () => {
     tg.expand();
     tg.enableClosingConfirmation()
 
     main_button.text = "Опубликовать";
     main_button.show();
-    main_button.disable();
+    // TODO: отключение главной кнопки
 
     DEPENDENT_COUNTERS.forEach(item => {
         let [name, max_len, req] = item;
@@ -49,6 +46,7 @@ window.onload = () => {
             let cond = len <= max_len
             if (req) { cond = cond && len > 0; }
 
+            block -= 1;
             toggle(cond, count);
         };
 
@@ -58,18 +56,19 @@ window.onload = () => {
 
     let images = document.getElementById('images');
     let input = document.getElementById('hidden_input');
-    let output = document.getElementById('hidden_output');
     let count = document.getElementById('images_count');
     images.onclick = () => input.click();
 
-    input.onselect = () => {
+    input.onclick = () => {
+        input.files = null;
+    };
+
+    input.onchange = () => {
         files = input.files;
         let len = files.length;
 
-        count.innerText = `${len}/5`;
+        count.innerText = `(${len}/5)`;
         toggle(len <= 5, count);
-
-        output.innerText = files;
     };
 };
 
