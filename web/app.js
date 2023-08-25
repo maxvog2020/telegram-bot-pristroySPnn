@@ -1,12 +1,5 @@
 let tg = window.Telegram.WebApp;
-
-tg.expand();
-tg.enableClosingConfirmation()
-
 let main_button = tg.MainButton;
-main_button.text = "Опубликовать";
-main_button.show();
-main_button.disable();
 
 
 const COLOR_GREEN = "text-green-500";
@@ -36,6 +29,13 @@ const DEPENDENT_COUNTERS = [
 ];
 
 window.onload = () => {
+    tg.expand();
+    tg.enableClosingConfirmation()
+
+    main_button.text = "Опубликовать";
+    main_button.show();
+    main_button.disable();
+
     DEPENDENT_COUNTERS.forEach(item => {
         let [name, max_len, req] = item;
 
