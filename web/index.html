@@ -55,13 +55,14 @@
 
                     <div class="md:col-span-5 mt-8">
                         <label for="image_count">Количество фотографий</label>
-                        <input type="number" min="0" max="5" name="image_count" id="image_count" class="h-10 border mt-1 rounded px-4 w-full"
-                            value="0" />
-                    </div>
+                        <input type="range" min="0" max="5" value="0" name="image_count" id="image_count"
+                            class="h-10 border rounded w-full" />
+                        <span class="text-sm text-green-500 flex justify-end" id="image_count_text">0/5</span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 
 </html>

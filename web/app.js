@@ -38,11 +38,6 @@ function toggle(cond, count) {
 
 
 window.onload = () => {
-    tg.expand();
-    tg.enableClosingConfirmation()
-
-    main_button.text = "Опубликовать";
-    main_button.show();
     toggleBlock();
 
     DEPENDENT_COUNTERS.forEach(item => {
@@ -65,19 +60,22 @@ window.onload = () => {
         tag.oninput = oninput;
     });
 
-    let images = document.getElementById('images');
-    let input = document.getElementById('hidden_input');
-    let count = document.getElementById('images_count');
-    
-    images.onclick = () => input.click();
+    let tag = document.getElementById('image_count');
+    let text = document.getElementById('image_count_text');
 
-    setInterval(() => {
-        files = input.files;
-        let len = files.length;
+    let oninput = () => {
+        let value = tag.value;
+        text.innerText = `${value}/5`;
 
-        count.innerText = `(${len}/5)`;
-        toggle(len <= 5, count);
-    }, 50);
+        if (value == 0) {
+            main_button.text = "Опубликовать";
+        } else {
+            main_button.text = "Приложить фотографии и опубликовать";
+        }
+    };
+
+    oninput();
+    tag.oninput = oninput;
 
 
     main_button.onClick(() => {
@@ -92,5 +90,10 @@ window.onload = () => {
  
         tg.sendData(JSON.stringify(data));
     });
+
+
+    tg.expand();
+    tg.enableClosingConfirmation();
+    main_button.show();
 };
 
