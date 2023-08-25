@@ -63,7 +63,7 @@ window.onload = () => {
     let tag = document.getElementById('image_count');
     let text = document.getElementById('image_count_text');
 
-    let oninput = () => {
+    let onchange = () => {
         let value = tag.value;
         text.innerText = `${value}/5`;
 
@@ -74,8 +74,8 @@ window.onload = () => {
         }
     };
 
-    oninput();
-    tag.oninput = oninput;
+    onchange();
+    tag.onchange = onchange;
 
 
     main_button.onClick(() => {
