@@ -18,7 +18,7 @@ dp = Dispatcher()
 
 @dp.message(F.web_app_data)
 async def on_get_data(message: Message):
-    await message.answer(message.web_app_data)
+    await message.answer(message.web_app_data.data)
 
 @dp.message()
 async def on_start(message: Message):

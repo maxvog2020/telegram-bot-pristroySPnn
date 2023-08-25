@@ -69,13 +69,13 @@ window.onload = () => {
     
     images.onclick = () => input.click();
 
-    input.addEventListener('change', () => {
+    input.onchange = () => {
         files = input.files;
         let len = files.length;
 
         count.innerText = `(${len}/5)`;
         toggle(len <= 5, count);
-    });
+    };
 
 
     main_button.onClick(() => {
@@ -84,6 +84,7 @@ window.onload = () => {
             address: document.getElementById('address').value,
             description: document.getElementById('description').value,
             contacts: document.getElementById('contacts').value,
+            telegram: document.getElementById('telegram').value,
             images: files,
         };
  
