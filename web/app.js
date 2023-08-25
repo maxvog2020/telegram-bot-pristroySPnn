@@ -69,7 +69,7 @@ window.onload = () => {
     
     images.onclick = () => input.click();
 
-    input.onchange = () => {
+    input.onchange = (e) => {
         files = input.files;
         let len = files.length;
 
