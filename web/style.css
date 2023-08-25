@@ -10,12 +10,11 @@ input, textarea {
     background-color: var(--tg-theme-bg-color);
 }
 
-.subbody {
-    background-color: var(--tg-theme-secondary-bg-color);
+input[type="range"] {
+    accent-color: var(--tg-theme-button-color);
 }
 
-.bot-button {
-    color: var(--tg-theme-button-text-color);
-    background-color: var(--tg-theme-button-color);
+.subbody {
+    background-color: var(--tg-theme-secondary-bg-color);
 }
 
