@@ -72,7 +72,7 @@ window.onload = () => {
         files = input.files;
         let len = files.length;
 
-        count.innerText = `(${len}/5)`;
+        count.innerText = `(${len}/5) aaaaaaaaa`;
         toggle(len <= 5, count);
     };
 };
