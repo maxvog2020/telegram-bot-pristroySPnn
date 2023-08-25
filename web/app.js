@@ -6,10 +6,12 @@ tg.enableClosingConfirmation()
 let main_button = tg.MainButton;
 main_button.text = "Опубликовать";
 main_button.show();
+main_button.disable();
 
 
 const COLOR_GREEN = "text-green-500";
 const COLOR_RED = "text-red-500";
+var files = [];
 
 function toggle(cond, count) {
     if (cond) {
@@ -61,7 +63,7 @@ window.onload = () => {
     images.onclick = () => input.click();
 
     input.onchange = () => {
-        let files = input.files;
+        files = input.files;
         let len = files.length;
 
         count.innerText = `${len}/5`;
@@ -78,7 +80,7 @@ main_button.onClick(() => {
         address: document.getElementById('address').value,
         description: document.getElementById('description').value,
         contacts: document.getElementById('contacts').value,
-        images: document.getElementById('hidden_output').innerText,
+        images: files,
     });
 });
 
