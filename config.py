@@ -6,7 +6,6 @@ class Settings(BaseSettings):
     bot_token: SecretStr
     chat_id: SecretStr
     moder: SecretStr
-    web: str
 
     class Config:
         env_file = '.env'
