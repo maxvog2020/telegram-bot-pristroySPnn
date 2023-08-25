@@ -23,34 +23,35 @@ dp = Dispatcher(fsm_strategy=FSMStrategy.USER_IN_CHAT)
 async def test_callback(message: Message, values):
     data = values['json_data']
 
-    name = data['name']
-    address = data['address']
-    description = data['description']
-    contacts = data['contacts']
+    name = data['name'].strip()
+    address = data['address'].strip()
+    description = data['description'].strip()
+    contacts = data['contacts'].strip()
     telegram = data['telegram']
 
     text  = ''
-    text += f'🆕 <b>{name}</b> 🆕\n\n'
+    text += f'🆕 <em>Продаётся</em> <b>{name}</b> 🆕\n\n'
     text += f'🗺 {address}\n\n'
     text += f'ℹ {description}\n\n'
     text += f'👤 {contacts}'
 
-    tel = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.full_name}</a>'
-
-    if telegram and not (' ' + contacts).isspace():
-        text += ", "
+    if telegram and contacts != "":
+        text += f', '
 
     if telegram:
-        text += tel
+        text += get_telegram_ref(message)
 
     await send_with_images(CHAT_ID, text, values.get('images'))
-    await send_with_images(MODER, text + '\n\n\n<b>By</b> ' + tel, values.get('images'))
+    await send_with_images(MODER, text + '\n\n\n<b>By</b> ' + get_telegram_ref(message), values.get('images'))
 
 callbacks = {
     "test_callback": test_callback,
 }
 
 #########################
+def get_telegram_ref(message: Message):
+    return f'<a href="tg://user?id={message.from_user.id}">{message.from_user.full_name}</a>'
+
 async def send_with_images(chat_id, text, images):
     if images == [] or images == None:
         return await bot.send_message(chat_id, text, parse_mode="HTML")
@@ -122,9 +123,9 @@ async def on_callbacks(callback: CallbackQuery, state: FSMContext):
     url = WEB_PREFIX + callback.data
 
     markup = ReplyKeyboardBuilder()
-    markup.add(KeyboardButton(text="Перейти в меню", web_app=WebAppInfo(url=url)))
+    markup.add(KeyboardButton(text="Перейти в форму", web_app=WebAppInfo(url=url)))
 
-    message = await callback.message.answer(text="Нажмите на кнопку для перехода в меню", reply_markup=markup.as_markup())
+    message = await callback.message.answer(text="Нажмите на кнопку для перехода в форму", reply_markup=markup.as_markup())
 
     await callback.answer()
     await asyncio.sleep(3)
