@@ -66,25 +66,8 @@ window.onload = () => {
     let images = document.getElementById('images');
     let input = document.getElementById('hidden_input');
     let count = document.getElementById('images_count');
+    
     images.onclick = () => input.click();
-
-
-    input.oninput = () => {
-        count.innerText = `oninput`;
-    };
-
-    input.onselect = () => {
-        count.innerText = `onselect`;
-    };
-
-    input.onended = () => {
-        count.innerText = `onended`;
-    };
-
-    input.onclose = () => {
-        count.innerText = `onclose`;
-    };
-
 
     input.onchange = () => {
         files = input.files;
@@ -97,12 +80,15 @@ window.onload = () => {
 
 
 main_button.onClick(() => {
-    tg.sendData({
+    let data = {
         name: document.getElementById('name').value,
         address: document.getElementById('address').value,
         description: document.getElementById('description').value,
         contacts: document.getElementById('contacts').value,
         images: files,
-    });
+    };
+
+    document.getElementById('name').remove();
+    tg.sendData(JSON.stringify(data));
 });
 
