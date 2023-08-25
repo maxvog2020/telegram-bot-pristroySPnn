@@ -55,7 +55,30 @@ window.onload = () => {
     });
 
     let images = document.getElementById('images');
-    let hidden = document.getElementById('hidden_input');
-    images.onclick = () => hidden.click();
+    let input = document.getElementById('hidden_input');
+    let output = document.getElementById('hidden_output');
+    let count = document.getElementById('images_count');
+    images.onclick = () => input.click();
+
+    input.onchange = () => {
+        let files = input.files;
+        let len = files.length;
+
+        count.innerText = `${len}/5`;
+        toggle(len <= 5, count);
+
+        output.innerText = files;
+    };
 };
+
+
+main_button.onClick(() => {
+    tg.sendData({
+        name: document.getElementById('name').value,
+        address: document.getElementById('address').value,
+        description: document.getElementById('description').value,
+        contacts: document.getElementById('contacts').value,
+        images: document.getElementById('hidden_output').innerText,
+    });
+});
 
