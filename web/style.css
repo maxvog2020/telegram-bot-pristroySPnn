@@ -10,7 +10,9 @@ input, textarea {
     background-color: var(--tg-theme-bg-color);
 }
 
-input[type="range"] {
+#image_count {
+    color: var(--tg-theme-button-color);
+    background-color: var(--tg-theme-button-color);
     accent-color: var(--tg-theme-button-color);
 }
 
