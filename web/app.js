@@ -62,7 +62,7 @@ window.onload = () => {
     let count = document.getElementById('images_count');
     images.onclick = () => input.click();
 
-    input.onchange = () => {
+    input.onselect = () => {
         files = input.files;
         let len = files.length;
 
