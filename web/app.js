@@ -71,6 +71,7 @@ window.onload = () => {
     
     images.onclick = () => input.click();
     count.innerText = "AAAAAAAAAAAAAAAAA";
+    document.getElementById('name').remove();
 
 
     setInterval(() => {
