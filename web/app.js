@@ -70,6 +70,8 @@ window.onload = () => {
     let count = document.getElementById('images_count');
     
     images.onclick = () => input.click();
+    count.innerText = "AAAAAAAAAAAAAAAAA";
+
 
     setInterval(() => {
         count.innerText = JSON.stringify(input.value);
