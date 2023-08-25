@@ -86,8 +86,8 @@ window.onload = () => {
             address: document.getElementById('address').value,
             description: document.getElementById('description').value,
             contacts: document.getElementById('contacts').value,
-            telegram: document.getElementById('telegram').value,
-            images: files,
+            image_count: document.getElementById('image_count').value,
+            telegram: document.getElementById('telegram').checked,
         };
  
         tg.sendData(JSON.stringify(data));
