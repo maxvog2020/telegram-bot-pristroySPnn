@@ -68,11 +68,29 @@ window.onload = () => {
     let count = document.getElementById('images_count');
     images.onclick = () => input.click();
 
+
+    input.oninput = () => {
+        count.innerText = `oninput`;
+    };
+
+    input.onselect = () => {
+        count.innerText = `onselect`;
+    };
+
+    input.onended = () => {
+        count.innerText = `onended`;
+    };
+
+    input.onclose = () => {
+        count.innerText = `onclose`;
+    };
+
+
     input.onchange = () => {
         files = input.files;
         let len = files.length;
 
-        count.innerText = `(${len}/5) aaaaaaaaa`;
+        count.innerText = `(${len}/5)`;
         toggle(len <= 5, count);
     };
 };
