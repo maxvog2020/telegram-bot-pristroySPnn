@@ -30,7 +30,7 @@ async def test_callback(message: Message, values):
     telegram = data['telegram']
 
     text  = ''
-    text += f'🆕 <em>Продаётся</em> <b>{name}</b> 🆕\n\n'
+    text += f'🆕 Продаётся <b>{name}</b> 🆕\n\n'
     text += f'🗺 {address}\n\n'
     text += f'ℹ {description}\n\n'
     text += f'👤 {contacts}'
