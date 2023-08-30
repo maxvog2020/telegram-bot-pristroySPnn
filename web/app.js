@@ -9,8 +9,9 @@ const COLOR_GREEN = "text-green-500";
 const COLOR_RED = "text-red-500";
 const DEPENDENT_COUNTERS = [
     ['name', 128, true],
-    ['address', 128, true],
+    ['price', 32, false],
     ['description', 512, false],
+    ['address', 128, false],
     ['contacts', 128, false],
 ];
 
@@ -81,12 +82,13 @@ window.onload = () => {
     main_button.onClick(() => {
         let data = {
             name: document.getElementById('name').value,
-            address: document.getElementById('address').value,
             description: document.getElementById('description').value,
+            price: document.getElementById('price').value,
+            address: document.getElementById('address').value,
             contacts: document.getElementById('contacts').value,
             image_count: document.getElementById('image_count').value,
             telegram: document.getElementById('telegram').checked,
-            callback: "test_callback",
+            callback: "sell",
         };
  
         tg.sendData(JSON.stringify(data));

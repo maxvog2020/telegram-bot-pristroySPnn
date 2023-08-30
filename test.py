@@ -13,31 +13,35 @@ import json
 TOKEN = config.bot_token.get_secret_value()
 CHAT_ID = config.chat_id.get_secret_value()
 MODER = config.moder.get_secret_value()
-WEB_PREFIX = "https://maxvog2020.github.io/telegram-bot-test/web"
+WEB_PREFIX = "https://github.com/maxvog2020/telegram-bot-pristroySPnn/web"
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=TOKEN)
 dp = Dispatcher(fsm_strategy=FSMStrategy.USER_IN_CHAT)
 
 #########################
-async def test_callback(message: Message, values):
+async def sell_callback(message: Message, values):
     data = values['json_data']
 
     name = data['name'].strip()
-    address = data['address'].strip()
     description = data['description'].strip()
+    price = data['price'].strip()
+    address = data['address'].strip()
     contacts = data['contacts'].strip()
     telegram = data['telegram']
 
-    text  = ''
-    text += f'🆕 Продаётся <b>{name}</b> 🆕\n\n'
-    text += f'🗺 {address}\n\n'
-    text += f'ℹ {description}\n\n'
-    text += f'👤 {contacts}'
+    text = f'🆕 Пристрою <b>{name}</b> 🆕\n\n'
 
+    if description != "":
+        text += f'ℹ {description}\n\n'
+    if price != "":
+        text += f'💸 {price}\n\n'
+    if address != "":
+        text += f'🏢 {address}\n\n'
+    if telegram or contacts != "":
+        text += f'👤 {contacts}'
     if telegram and contacts != "":
         text += f', '
-
     if telegram:
         text += get_telegram_ref(message)
 
@@ -45,7 +49,7 @@ async def test_callback(message: Message, values):
     await send_with_images(MODER, text + '\n\n\n<b>By</b> ' + get_telegram_ref(message), values.get('images'))
 
 callbacks = {
-    "test_callback": test_callback,
+    "sell": sell_callback,
 }
 
 #########################
@@ -135,7 +139,7 @@ async def on_callbacks(callback: CallbackQuery, state: FSMContext):
 async def on_start(message: Message):
     markup = InlineKeyboardBuilder()
 
-    markup.add(InlineKeyboardButton(text="Создать объявление", callback_data="/"))
+    markup.add(InlineKeyboardButton(text="Пристрою", callback_data="/"))
 
     await message.answer("<b>➡️ Меню ⬅️</b>", reply_markup=markup.as_markup(), parse_mode="HTML")
     await message.delete()
