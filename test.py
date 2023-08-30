@@ -13,7 +13,7 @@ import json
 TOKEN = config.bot_token.get_secret_value()
 CHAT_ID = config.chat_id.get_secret_value()
 MODER = config.moder.get_secret_value()
-WEB_PREFIX = "https://github.com/maxvog2020/telegram-bot-pristroySPnn/web"
+WEB_PREFIX = "https://maxvog2020.github.io/telegram-bot-pristroySPnn/web"
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=TOKEN)
@@ -137,8 +137,12 @@ async def on_callbacks(callback: CallbackQuery, state: FSMContext):
 
 @dp.message(Command("start"))
 async def on_start(message: Message):
-    markup = InlineKeyboardBuilder()
+    if message.from_user.id == int(MODER):
+        await message.answer("==== Аккаунт модератора ====")
+        await message.delete()
+        return
 
+    markup = InlineKeyboardBuilder()
     markup.add(InlineKeyboardButton(text="Пристрою", callback_data="/"))
 
     await message.answer("<b>➡️ Меню ⬅️</b>", reply_markup=markup.as_markup(), parse_mode="HTML")
