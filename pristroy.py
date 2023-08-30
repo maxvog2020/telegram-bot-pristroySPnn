@@ -151,6 +151,9 @@ async def on_start(message: Message):
 @dp.message()
 async def delete_everything_else(message: Message):
     await message.delete()
+    message = await message.answer("Взаимодействуйте с <b>меню</b>!\n\nЕсли его нет, <b>удалите переписку с этим ботом и начните заново</b>")
+    await asyncio.sleep(7)
+    await message.delete()
 
 
 #########################
