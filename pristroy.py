@@ -58,7 +58,7 @@ def get_telegram_ref(message: Message):
 
 async def send_with_images(chat_id, text, images):
     if images == [] or images == None:
-        return await bot.send_message(chat_id, text, parse_mode="HTML")
+        return await bot.send_message(chat_id, text, parse_mode="HTML", disable_web_page_preview=True)
 
     media = [
         InputMediaPhoto(media=images[0].photo[-1].file_id, caption=text, parse_mode="HTML")
