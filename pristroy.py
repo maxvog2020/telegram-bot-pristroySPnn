@@ -30,7 +30,7 @@ async def sell_callback(message: Message, values):
     contacts = data['contacts'].strip()
     telegram = data['telegram']
 
-    text = f'🆕 #Пристрою <b>{name}</b> 🆕\n\n'
+    text = f'#Пристрою\n\n🆕<b>{name}</b> 🆕\n\n'
 
     if description != "":
         text += f'ℹ {description}\n\n'
