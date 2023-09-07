@@ -131,11 +131,9 @@ async def on_callbacks(callback: CallbackQuery):
 
     message = await callback.message.answer(text="Нажмите на кнопку для перехода в форму", reply_markup=markup.as_markup())
 
-    await callback.message.delete()
     await callback.answer()
     await asyncio.sleep(5)
     await message.delete()
-    await get_menu(message)
 
 @dp.message(Command("start"))
 async def on_start(message: Message):
