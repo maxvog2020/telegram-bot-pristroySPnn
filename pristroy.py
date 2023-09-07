@@ -30,16 +30,16 @@ async def sell_callback(message: Message, values):
     contacts = data['contacts'].strip()
     telegram = data['telegram']
 
-    text = f'#Пристрою\n\n🆕<b>{name}</b> 🆕\n\n'
+    text = f'#пристрою\n\n<em>Название</em>\n🆕 <b>{name}</b>\n\n'
 
     if description != "":
-        text += f'ℹ {description}\n\n'
+        text += f'<em>Описание</em>\nℹ {description}\n\n'
     if price != "":
-        text += f'💸 {price}\n\n'
+        text += f'<em>Цена</em>\n💸 {price}\n\n'
     if address != "":
-        text += f'🏢 {address}\n\n'
+        text += f'<em>Адрес</em>\n🏢 {address}\n\n'
     if telegram or contacts != "":
-        text += f'👤 {contacts}'
+        text += f'<em>Контакты</em>\n👤 {contacts}'
     if telegram and contacts != "":
         text += f', '
     if telegram:
@@ -123,7 +123,7 @@ async def on_get_data(message: Message, state: FSMContext):
 
 
 @dp.callback_query()
-async def on_callbacks(callback: CallbackQuery, state: FSMContext):
+async def on_callbacks(callback: CallbackQuery):
     url = WEB_PREFIX + callback.data
 
     markup = ReplyKeyboardBuilder()
@@ -131,9 +131,11 @@ async def on_callbacks(callback: CallbackQuery, state: FSMContext):
 
     message = await callback.message.answer(text="Нажмите на кнопку для перехода в форму", reply_markup=markup.as_markup())
 
+    await callback.message.delete()
     await callback.answer()
-    await asyncio.sleep(3)
+    await asyncio.sleep(5)
     await message.delete()
+    await get_menu(message)
 
 @dp.message(Command("start"))
 async def on_start(message: Message):
@@ -142,10 +144,7 @@ async def on_start(message: Message):
         await message.delete()
         return
 
-    markup = InlineKeyboardBuilder()
-    markup.add(InlineKeyboardButton(text="Пристрою", callback_data="/"))
-
-    await message.answer("<b>➡️ Меню ⬅️</b>", reply_markup=markup.as_markup(), parse_mode="HTML")
+    await get_menu()
     await message.delete()
 
 @dp.message()
@@ -155,6 +154,11 @@ async def delete_everything_else(message: Message):
     await asyncio.sleep(7)
     await message.delete()
 
+async def get_menu(message: Message):
+    markup = InlineKeyboardBuilder()
+    markup.add(InlineKeyboardButton(text="Пристрою", callback_data="/"))
+
+    await message.answer("<b>☰ Меню</b>", reply_markup=markup.as_markup(), parse_mode="HTML")
 
 #########################
 async def main():
