@@ -142,7 +142,7 @@ async def on_start(message: Message):
         await message.delete()
         return
 
-    await get_menu()
+    await get_menu(message)
     await message.delete()
 
 @dp.message()
