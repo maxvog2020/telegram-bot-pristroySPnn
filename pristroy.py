@@ -121,7 +121,7 @@ async def on_get_data(message: Message, state: FSMContext):
         to_delete = await message.answer(f"Приложите фотографии ({image_count} шт.)")
         await state.update_data(to_delete=to_delete)
 
-
+@dp.callback_query()
 async def on_callbacks(callback: CallbackQuery):
     await callback.message.answer("Удалите переписку с этим ботом и начните заново")
     await callback.answer()
