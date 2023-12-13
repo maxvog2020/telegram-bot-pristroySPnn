@@ -4,7 +4,7 @@ import logging
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message, WebAppInfo, KeyboardButton, CallbackQuery, InputMediaPhoto
 from aiogram.filters import Command
-from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder, InlineKeyboardButton
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.strategy import FSMStrategy
 import json
@@ -30,7 +30,7 @@ async def sell_callback(message: Message, values):
     contacts = data['contacts'].strip()
     telegram = data['telegram']
 
-    text = f'#пристрою\n\n<em>Название</em>\n🆕 <b>{name}</b>\n\n'
+    text = f'#продам\n\n<em>Название</em>\n🆕 <b>{name}</b>\n\n'
 
     if description != "":
         text += f'<em>Описание</em>\nℹ {description}\n\n'
