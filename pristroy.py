@@ -1,3 +1,4 @@
+import html
 from config import config
 import asyncio
 import logging
@@ -30,16 +31,16 @@ async def sell_callback(message: Message, values):
     contacts = data['contacts'].strip()
     telegram = data['telegram']
 
-    text = f'#продам\n\n<em>Название</em>\n🆕 <b>{name}</b>\n\n'
+    text = f'#продам\n\n<em>Название</em>\n🆕 <b>{html.escape(name)}</b>\n\n'
 
     if description != "":
-        text += f'<em>Описание</em>\nℹ {description}\n\n'
+        text += f'<em>Описание</em>\nℹ {html.escape(description)}\n\n'
     if price != "":
-        text += f'<em>Цена</em>\n💸 {price}\n\n'
+        text += f'<em>Цена</em>\n💸 {html.escape(price)}\n\n'
     if address != "":
-        text += f'<em>Адрес</em>\n🏢 {address}\n\n'
+        text += f'<em>Адрес</em>\n🏢 {html.escape(address)}\n\n'
     if telegram or contacts != "":
-        text += f'<em>Контакты</em>\n👤 {contacts}'
+        text += f'<em>Контакты</em>\n👤 {html.escape(contacts)}'
     if telegram and contacts != "":
         text += f', '
     if telegram:
@@ -54,7 +55,8 @@ callbacks = {
 
 #########################
 def get_telegram_ref(message: Message):
-    return f'<a href="tg://user?id={message.from_user.id}">{message.from_user.full_name}</a>'
+    name = html.escape(message.from_user.full_name)
+    return f'<a href="tg://user?id={message.from_user.id}">{name}</a>'
 
 async def send_with_images(chat_id, text, images):
     if images == [] or images == None:
